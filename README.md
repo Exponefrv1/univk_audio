@@ -1,4 +1,4 @@
-# Search and download songs from VK easily with univk_audio!
+# Search and download songs from VK easily with univk_audio
 An easy-to-use library that allows you to search and download audio from VK, bypassing the restriction on obtaining a token to use the VK audio API.
 
 ## Key features
@@ -28,12 +28,14 @@ from univk_audio import AsyncVKAuth
 async def get_auth_cookies_example():
     login: str = "79998887776"
     password: str = "password"
+
     # user_agent is optional:
     user_agent: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
 
     auth = AsyncVKAuth(login = login, password = password, user_agent = user_agent)
 
     # .get_auth_cookies Returns a string with cookies
+    # path is optional, if specified - saves cookies in file
 
     cookies = await auth.get_auth_cookies(path = "cookies.txt")
     await auth.close()
@@ -55,12 +57,14 @@ from univk_audio import AsyncVKAuth
 async def get_auth_cookies_with_example():
     login: str = "79998887776"
     password: str = "password"
+
     # user_agent is optional:
     user_agent: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
 
     async with AsyncVKAuth(login = login, password = password, user_agent = user_agent) as auth:
 
-         # .get_auth_cookies Returns a string with cookies
+        # .get_auth_cookies Returns a string with cookies
+        # path is optional, if specified - saves cookies in file
 
         cookies = await auth.get_auth_cookies(path = "cookies.txt") 
 
