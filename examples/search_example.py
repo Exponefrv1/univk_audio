@@ -14,7 +14,7 @@ async def search_example():
 
     # .search Returns a Dict[str, str]
     # {"*song-title*": "*download-link*"}
-    
+
     search_results = await music.search(query = "Imagine Dragons - Bones")
     await music.close()
 
