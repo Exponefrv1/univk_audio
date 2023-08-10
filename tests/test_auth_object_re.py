@@ -46,9 +46,6 @@ def get_data():
     # Find all matches using the regular expression
     matches = re.findall(pattern, page_content)
 
-    # Extract the values from the matches
-
-    access_token, anonymous_token, host_app_id, auth_app_id, user_id = matches[0]
     return matches[0]
 
 
