@@ -184,6 +184,7 @@ Free copying and use is allowed.
 https://github.com/Exponefrv1/univk_audio
 
 ## Author
+Discord: autumnale  
 Telegram: [@AnemoneSong](https://t.me/AnemoneSong)
 *  I don't ask for donations or something.
 *  Any questions, suggestions and crit are welcome.
