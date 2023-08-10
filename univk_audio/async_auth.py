@@ -146,7 +146,7 @@ class AsyncVKAuth:
                                 access_token_data = await self.__solve_captcha_request(access_token_data, answer)
                         else:
                             # TODO
-                            raise
+                            pass
                     if access_token_data.get("type") == "error":
                         error_code = access_token_data.get("error_code")
                         raise ConnectAuthRequestError(
