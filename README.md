@@ -4,18 +4,18 @@ An easy-to-use library that allows you to search and download audio from VK, byp
 
 ## Key features
 
-*  Doesn't require a VK Audio API token
-*  Login + password authorization
-*  Searching for songs without specific query rules
-*  Downloading songs
-*  Supports async
+*   Doesn't require a VK Audio API token
+*   Login + password authorization
+*   Searching for songs without specific query rules
+*   Downloading songs
+*   Supports async
 
 ## Requirements
-*  [aiofiles](https://pypi.org/project/aiofiles/)
-*  [aiohttp](https://pypi.org/project/aiohttp/)
-*  [beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
-*  [httpx](https://pypi.org/project/httpx/)
-*  [lxml](https://pypi.org/project/lxml/)
+*   [aiofiles](https://pypi.org/project/aiofiles/)
+*   [aiohttp](https://pypi.org/project/aiohttp/)
+*   [beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
+*   [httpx](https://pypi.org/project/httpx/)
+*   [lxml](https://pypi.org/project/lxml/)
  
 ## Installation
 ```
@@ -186,5 +186,5 @@ https://github.com/Exponefrv1/univk_audio
 ## Author
 Discord: autumnale  
 Telegram: [@AnemoneSong](https://t.me/AnemoneSong)
-*  I don't ask for donations or something.
-*  Any questions, suggestions and crit are welcome.
+*   I don't ask for donations or something.
+*   Any questions, suggestions and crit are welcome.
