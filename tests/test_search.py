@@ -4,9 +4,9 @@ from univk_audio import AsyncVKMusic
 
 @pytest.mark.asyncio
 async def test_search():
-    cookies = "Was specified during the tests"
+    cookies = "id=816380914; first_name=Shantel; photo_50=https%3A%2F%2Fvk.com%2Fimages%2Fcamera_50.png"
     async with AsyncVKMusic(cookies = cookies) as music:
         search_results = await music.search(query = "Imagine Dragons - Bones")
-        title, download_link = search_results.items()[0]
+        title, download_link = next(iter(search_results.items()))
         assert title == "Imagine Dragons - Bones"
-        assert download_link == "/download.php?id=474499180_456664664;35_ff82cb9e8a703b81be_3799e66f858fae28ac&hash=5181565627933264230e85d7342f181e593cfa6e89a1fc30ce4d70234f90d631"
+        assert download_link == "/download.php?id=32350711_456239163;35_43a58a32cf9121093e_09a88cef1c4bb81fb3&hash=f208cd6809ec0a6c42625495b9ae032b8809b70485a3c480ccdd0e629ab42e31"
