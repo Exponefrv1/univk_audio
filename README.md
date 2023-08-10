@@ -28,10 +28,9 @@ from univk_audio import AsyncVKAuth
 async def get_auth_cookies_example():
 	login: str = "79998887776"
 	password: str = "password"
+	# user_agent is optional:
 	user_agent: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
-	auth = AsyncVKAuth(login = login,
-					   password = password,
-					   user_agent = user_agent)
+	auth = AsyncVKAuth(login = login, password = password, user_agent = user_agent)
 
 	# .get_auth_cookies Returns a string with cookies
 
@@ -55,10 +54,9 @@ from univk_audio import AsyncVKAuth
 async def get_auth_cookies_with_example():
 	login: str = "79998887776"
 	password: str = "password"
+	# user_agent is optional:
 	user_agent: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
-	async with AsyncVKAuth(login = login,
-					   	   password = password,
-					   	   user_agent = user_agent) as auth:
+	async with AsyncVKAuth(login = login, password = password, user_agent = user_agent) as auth:
 
 		# .get_auth_cookies Returns a string with cookies
 
@@ -81,10 +79,10 @@ from univk_audio import AsyncVKMusic
 # Example with class object, needs to close session manually
 
 async def search_example():
-	user_agent: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
 	cookies: str = "Your cookies from auth. See -> examples/auth_example.py"
-	music = AsyncVKMusic(cookies = cookies,
-						           user_agent = user_agent)
+	# user_agent is optional:
+	user_agent: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+	music = AsyncVKMusic(cookies = cookies, user_agent = user_agent)
 
   # .search Returns a Dict[str, str]
 	# {"*song-title*": "*download-link*"}
@@ -93,7 +91,7 @@ async def search_example():
 	await music.close()
 
   for title, download_link in search_results.items():
-		print(f"{title}\n{download_link}\n" + "-" * 15)
+	print(f"{title}\n{download_link}\n" + "-" * 15)
 
 asyncio.run(search_example())
 ```
@@ -108,8 +106,9 @@ from univk_audio import AsyncVKMusic
 # Example with 'async with' construction, that closes session automatically
 
 async def search_with_example():
-	user_agent: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
 	cookies: str = "Your cookies from auth. See -> auth_example.py"
+	# user_agent is optional:
+	user_agent: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
 	async with AsyncVKMusic(cookies = cookies, user_agent = user_agent) as music:
 
 			# .search Returns a Dict[str, str]
