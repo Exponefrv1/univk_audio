@@ -9,6 +9,13 @@ An easy-to-use library that allows you to search and download audio from VK, byp
 *  Downloading songs
 *  Supports async
 
+## Requirements
+*  [aiofiles](https://pypi.org/project/aiofiles/)
+*  [aiohttp](https://pypi.org/project/aiohttp/)
+*  [beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
+*  [httpx](https://pypi.org/project/httpx/)
+*  [lxml](https://pypi.org/project/lxml/)
+ 
 ## Installation
 ```pip install univk_audio```
 
@@ -133,7 +140,7 @@ asyncio.run(search_with_example())
 
 ### Search and download songs
 
-#### General example of downloading songs from search results
+#### General example of downloading songs from search results:
 
 ```python3
 # examples/search_and_download_example.py
