@@ -93,7 +93,7 @@ class AsyncVKAuth:
         try:
             matches = re.findall(self._req_data.auth_part_pattern, response_content)
             if matches:
-                access_token, anonymous_token, host_app_id, auth_app_id, user_id = matches[0]
+                access_token = matches[0][0]
                 cookies = self._session.cookie_jar.filter_cookies("https://id.vk.com/")
                 cookies = "; ".join([str(x)+"="+str(y) for x,y in cookies.items()])
                 self._req_data.connect_auth_data.update({"auth_token": access_token})
@@ -160,7 +160,7 @@ class AsyncVKAuth:
                         self._req_data.main_headers.update({"Cookie": cookies})
                 else:
                     raise ConnectAuthRequestError(
-                            f"Connect Auth returned an error request status code: {vk_id_request.status}"
+                            f"Connect Auth returned an error request status code: {connect_auth_request.status}"
                         )
         except ConnectAuthRequestError as expected_err:
             raise expected_err
@@ -188,7 +188,7 @@ class AsyncVKAuth:
                 params = {"code": self._req_data.code}
             ) as get_cookies_request:
                 cookies = self._session.cookie_jar.filter_cookies("http://luxvk.com/")
-                cookies = cookie_string = "; ".join([str(x)+"="+str(y) for x,y in cookies.items()])
+                cookies = "; ".join([str(x)+"="+str(y) for x,y in cookies.items()])
                 return cookies
         except Exception as err:
             raise GetCookiesRequestError("Failed to send/process 'Get Cookies' request") from err
@@ -211,7 +211,7 @@ class AsyncVKAuth:
             await self.__send_oauth_code_request()
 
             cookie_string = await self.__send_get_cookies_request()
-            if path != None:
+            if path is not None:
                 await self.__write_cookies(path, cookie_string)
             await self.close()
             return cookie_string
