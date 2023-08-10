@@ -11,11 +11,11 @@ async def search_with_example():
 
     async with AsyncVKMusic(cookies = cookies, user_agent = user_agent) as music:
 
-            # .search Returns a Dict[str, str]
-            # {"*song-title*": "*download-link*"}
+        # .search Returns a Dict[str, str]
+        # {"*song-title*": "*download-link*"}
 
-            search_results = await music.search(query = "Imagine Dragons - Bones")
-            for title, download_link in search_results.items():
-                print(f"{title}\n{download_link}\n" + "-" * 15)
+        search_results = await music.search(query = "Imagine Dragons - Bones")
+        for title, download_link in search_results.items():
+            print(f"{title}\n{download_link}\n" + "-" * 15)
 
 asyncio.run(search_with_example())
