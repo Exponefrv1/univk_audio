@@ -4,8 +4,8 @@ An easy-to-use library that allows you to search and download audio from VK, byp
 ## Key features
 
 *  Doesn't require a VK Audio API token
-*  Login + password auth
-*  Searching for songs without specific query rules.
+*  Login + password authorization
+*  Searching for songs without specific query rules
 *  Downloading songs
 *  Supports async
 
