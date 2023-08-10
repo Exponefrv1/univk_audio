@@ -1,4 +1,4 @@
-![Logo](https://i.imgur.com/SyW0EVb.png)
+![Logo](https://i.imgur.com/68Yy80c.png)
 # Search and download songs from VK easily with univk_audio
 An easy-to-use library that allows you to search and download audio from VK, bypassing the restriction on obtaining a token to use the VK audio API.
 
