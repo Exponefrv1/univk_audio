@@ -1,4 +1,5 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/1149ba85c97f46f7a20fe41387090b1d)](https://app.codacy.com/gh/Exponefrv1/univk_audio/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![PyPI version](https://badge.fury.io/py/univk-audio.svg)](https://badge.fury.io/py/univk-audio)
 ![Logo](https://i.imgur.com/68Yy80c.png)
 
 # Search and download songs from VK easily with univk_audio
