@@ -1,0 +1,23 @@
+import asyncio
+from univk_audio import AsyncVKMusic
+
+# Example with class object, needs to close session manually
+
+async def search_example():
+
+	user_agent: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+	cookies: str = "Your cookies from auth. See -> auth_example.py"
+
+	music = AsyncVKMusic(cookies = cookies,
+						 user_agent = user_agent)
+
+	# Returns a Dict[str, str]
+	# {"*song-title*": "*download-link*"}
+	search_results = await music.search(query = "Imagine Dragons - Bones")
+	await music.close()
+
+	for title, download_link in search_results.items():
+		print(f"{title}\n{download_link}\n" + "-" * 15)
+
+
+asyncio.run(search_example())
