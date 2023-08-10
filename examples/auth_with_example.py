@@ -15,7 +15,7 @@ async def get_auth_cookies_with_example():
         # .get_auth_cookies Returns a string with cookies
         # path is optional, if specified - saves cookies in file
 
-        cookies = await auth.get_auth_cookies(path = "cookies.txt") 
+        cookies = await auth.get_auth_cookies(path = "cookies.txt")
 
         print(cookies)
 
