@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as file:
 
 setuptools.setup(
     name = "univk_audio",
-    version = "1.0.1",
+    version = "1.0.2",
     author = "Unik",
     description = "An easy-to-use library that allows you to search and download audio from VK, bypassing the restriction on obtaining a token to use the VK audio API.",
     long_description = long_description,
