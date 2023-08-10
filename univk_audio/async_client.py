@@ -87,7 +87,7 @@ class AsyncVKMusic:
                     headers = self._req_data.download_headers
                 )
             song_link = str(download_request.headers.get("Location"))
-            additional_request = await self._httpx_session.get(
+            await self._httpx_session.get(
                     song_link,
                     headers = self._req_data.download_headers
                 )
