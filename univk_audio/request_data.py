@@ -13,7 +13,7 @@ class VKMusicData:
         user_agent: Optional[str] = None
     ) -> "VKMusicData":
 
-        if user_agent == None:
+        if user_agent is None:
             user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
 
         self.base_url: str = "https://luxvk.com"
@@ -33,9 +33,9 @@ class VKAuthData:
         username: str,
         password: str,
         user_agent: Optional[str] = None
-    ) -> "VKAuthdata":
+    ) -> "VKAuthData":
 
-        if user_agent == None:
+        if user_agent is None:
             user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
 
         self.links: Tuple[str, ...] = (
