@@ -1,5 +1,8 @@
 ![Logo](https://i.imgur.com/68Yy80c.png)
 # Search and download songs from VK easily with univk_audio
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2ca68d4c64fa4149b1bc220a3a0f1a45)](https://app.codacy.com/gh/Exponefrv1/univk_audio?utm_source=github.com&utm_medium=referral&utm_content=Exponefrv1/univk_audio&utm_campaign=Badge_Grade)
+
 An easy-to-use library that allows you to search and download audio from VK, bypassing the restriction on obtaining a token to use the VK audio API.
 
 ## Key features
