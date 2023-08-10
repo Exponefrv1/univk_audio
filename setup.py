@@ -29,5 +29,6 @@ setuptools.setup(
     project_urls={
         "Homepage": "https://github.com/Exponefrv1/univk_audio",
         "Issues": "https://github.com/Exponefrv1/univk_audio/issues",
+        "Author": "https://t.me/AnemoneSong",
     },
 )
