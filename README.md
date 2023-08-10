@@ -131,7 +131,9 @@ async def search_with_example():
 asyncio.run(search_with_example())
 ```
 
-### Search and download song
+### Search and download songs
+
+#### General example of downloading songs from search results
 
 ```python3
 # examples/search_and_download_example.py
