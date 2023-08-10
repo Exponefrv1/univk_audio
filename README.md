@@ -17,7 +17,9 @@ An easy-to-use library that allows you to search and download audio from VK, byp
 *  [lxml](https://pypi.org/project/lxml/)
  
 ## Installation
-```pip install univk_audio```
+```
+pip install univk_audio
+```
 
 ## Getting started
 
