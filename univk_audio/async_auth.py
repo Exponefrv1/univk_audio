@@ -64,7 +64,7 @@ class AsyncVKAuth:
                 headers = self._req_data.main_headers
             ) as oauth_request:
                 cookies = self._session.cookie_jar.filter_cookies("http://oauth.vk.com/")
-                cookies = "; ".join([str(x)+"="+str(y) for x,y in cookies.items()])
+                cookies = "; ".join([str(x)+"="+str(y) for x, y in cookies.items()])
                 self._req_data.main_headers.update({"Cookie": cookies})
         except Exception as err:
             raise OAuthRequestError("Failed to send/process 'OAuth' request") from err
@@ -95,7 +95,7 @@ class AsyncVKAuth:
             if matches:
                 access_token = matches[0][0]
                 cookies = self._session.cookie_jar.filter_cookies("https://id.vk.com/")
-                cookies = "; ".join([str(x)+"="+str(y) for x,y in cookies.items()])
+                cookies = "; ".join([str(x)+"="+str(y) for x, y in cookies.items()])
                 self._req_data.connect_auth_data.update({"auth_token": access_token})
                 self._req_data.main_headers["Cookie"] = cookies
                 self._req_data.main_headers.update(
@@ -155,7 +155,7 @@ class AsyncVKAuth:
                     if access_token_data.get("type") == "okay":
                         access_token = access_token_data.get("data").get("access_token")
                         cookies = self._session.cookie_jar.filter_cookies("https://login.vk.com/")
-                        cookies = "; ".join([str(x)+"="+str(y) for x,y in cookies.items()])
+                        cookies = "; ".join([str(x)+"="+str(y) for x, y in cookies.items()])
                         self._req_data.oauth_code_data.update({"access_token": access_token})
                         self._req_data.main_headers.update({"Cookie": cookies})
                 else:
@@ -188,7 +188,7 @@ class AsyncVKAuth:
                 params = {"code": self._req_data.code}
             ) as get_cookies_request:
                 cookies = self._session.cookie_jar.filter_cookies("http://luxvk.com/")
-                cookies = "; ".join([str(x)+"="+str(y) for x,y in cookies.items()])
+                cookies = "; ".join([str(x)+"="+str(y) for x, y in cookies.items()])
                 return cookies
         except Exception as err:
             raise GetCookiesRequestError("Failed to send/process 'Get Cookies' request") from err
