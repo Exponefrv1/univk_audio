@@ -1,10 +1,37 @@
-import asyncio
-import aiohttp
-import aiofiles
-import httpx
-import re
-from bs4 import BeautifulSoup
+"""
+Client module of univk_audio library.
 
+Methods:
+--------------------------------
+
+search(query: str)
+
+Get songs from vk.
+
+Returns a dict with song's title and download link.
+
+--------------------------------
+
+download(link: str, path: str)
+
+Download songs.
+Need to specify the download link of the song.
+
+Returns True, if song is downloaded.
+
+--------------------------------
+
+close()
+
+Close client session.
+
+Returns None.
+
+--------------------------------
+"""
+
+import re
+import asyncio
 from types import TracebackType
 from typing import (
     Optional,
@@ -12,6 +39,11 @@ from typing import (
     Dict,
     Type
 )
+
+import aiohttp
+import aiofiles
+import httpx
+from bs4 import BeautifulSoup
 
 from .request_data import VKMusicData
 from .client_exceptions import (
@@ -35,7 +67,16 @@ __all__ = (
     "DownloaderWriteError"
 )
 
+
 class AsyncVKMusic:
+
+    """
+    Main client module class.
+
+    AsyncVKMusic(cookies: str, user_agent: Optional[str])
+
+    Check module docstring for additional info.
+    """
 
     __slots__ = (
         "_req_data",
@@ -47,7 +88,7 @@ class AsyncVKMusic:
     def __init__(
         self,
         cookies: str,
-        user_agent: str = None
+        user_agent: Optional[str] = None
     ) -> None:
         req_data = VKMusicData(cookies, user_agent)
         httpx_session = httpx.AsyncClient()
@@ -68,13 +109,15 @@ class AsyncVKMusic:
         try:
             soup = BeautifulSoup(data, 'lxml')
             div = soup.find("div", {"class": "col pl"})
-            ul = div.find("ul", {"class": "sm2-playlist-bd list-group"})
-            elements = ul.find_all("li",
-                {"class": "list-group-item justify-content-between list-group-item-action"})
+            ul_list_group = div.find("ul", {"class": "sm2-playlist-bd list-group"})
+            elements = ul_list_group.find_all(
+                "li",
+                {"class": "list-group-item justify-content-between list-group-item-action"}
+            )
             search_results = {}
-            for el in elements:
-                link = el.find("a", {"target": "_blank"})
-                search_results.update({el.get_text(): link.get("href")})
+            for element in elements:
+                link = element.find("a", {"target": "_blank"})
+                search_results.update({element.get_text(): link.get("href")})
             return search_results
         except Exception as err:
             raise ParserError("Failed to parse song data") from err
@@ -84,12 +127,12 @@ class AsyncVKMusic:
         try:
             download_request = await self._httpx_session.get(
                     self._req_data.base_url + download_link,
-                    headers = self._req_data.download_headers
+                    headers=self._req_data.download_headers
                 )
             song_link = str(download_request.headers.get("Location"))
             await self._httpx_session.get(
                     song_link,
-                    headers = self._req_data.download_headers
+                    headers=self._req_data.download_headers
                 )
             regex = r"https:\/\/dl01\.dtmp3\.pw\/cs\d+-\d+v\d+\.vkuseraudio\.net\/s\/v1\/ac\/"
             song_link = re.sub(regex, "https://ts01.flac.pw/dl/", song_link)
@@ -103,7 +146,7 @@ class AsyncVKMusic:
         try:
             async with self._aiohttp_session.get(
                 song_link,
-                headers = self._req_data.download_headers
+                headers=self._req_data.download_headers
             ) as song_content:
                 content_bytes = await song_content.read()
                 content_length = int(song_content.headers['Content-Length'])
@@ -124,8 +167,8 @@ class AsyncVKMusic:
             params = {"q": query, "p": 1}
             search_request = await self._httpx_session.get(
                 self._req_data.base_url,
-                headers = self._req_data.main_headers,
-                params = params
+                headers=self._req_data.main_headers,
+                params=params
             )
             search_results = await self._loop.run_in_executor(
                 None,
@@ -145,17 +188,19 @@ class AsyncVKMusic:
                 raise InvalidPath("Invalid path provided")
             song_link = await self.__get_song_link(link)
             length = 0
+            content = b""
             while length == 0:
                 await asyncio.sleep(3)
                 content_data = await self.__download_song_request(song_link)
                 content, length = content_data[0], content_data[1]
-            async with aiofiles.open(path, mode = "wb") as file:
+            async with aiofiles.open(path, mode="wb") as file:
                 await file.write(content)
             return True
         except InvalidPath as expected_err:
             raise expected_err
         except FileNotFoundError as expected_err:
-            expected_err.strerror = f"Failed to write song content into the file. No such file or directory: '{path}'"
+            expected_err.strerror = "Failed to write song content into the file. " \
+            f"No such file or directory: '{path}'"
             raise expected_err
         except Exception as err:
             raise DownloaderWriteError("Failed to write song content into the file") from err
@@ -204,4 +249,3 @@ class AsyncVKMusic:
         exc_tb: Optional[TracebackType]
     ) -> None:
         await self.close()
-

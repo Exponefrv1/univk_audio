@@ -1,5 +1,5 @@
-import pytest
 import re
+import pytest
 
 
 @pytest.fixture
@@ -41,7 +41,9 @@ def get_data():
     '''
 
     # Define the regular expression pattern
-    pattern = r'"auth":\s*{\s*"(?:\w+|_\w+)"\s*:\s*"(.*?)",\s*"(?:\w+|_\w+)"\s*:\s*"(.*?)",\s*"(?:\w+|_\w+)"\s*:\s*([0-9]+),\s*"(?:\w+|_\w+)"\s*:\s*([0-9]+),\s*"(?:\w+|_\w+)"\s*:\s*([0-9]+)\s*}'
+    pattern = r'"auth":\s*{\s*"(?:\w+|_\w+)"\s*:\s*"(.*?)",\s*"(?:\w+|_\w+)"' \
+    r'\s*:\s*"(.*?)",\s*"(?:\w+|_\w+)"\s*:\s*([0-9]+),\s*"(?:\w+|_\w+)"\s*:\s*([0-9]+),' \
+    r'\s*"(?:\w+|_\w+)"\s*:\s*([0-9]+)\s*}'
 
     # Find all matches using the regular expression
     matches = re.findall(pattern, page_content)
@@ -51,4 +53,3 @@ def get_data():
 
 def test_auth_regexp(get_data):
     assert get_data == ('access_token_test_example', 'anonymous_token_test_example', '6102407', '0', '0')
-

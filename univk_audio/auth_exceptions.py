@@ -41,4 +41,3 @@ class AuthParsingError(Exception):
 
 class CookieWriterError(Exception):
     """Handle file writing error"""
-

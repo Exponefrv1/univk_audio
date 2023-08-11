@@ -36,4 +36,3 @@ class DownloaderRequestError(Exception):
 
 class DownloaderWriteError(Exception):
     """Handle file writing errors"""
-
