@@ -1,6 +1,9 @@
 ![Logo](https://i.imgur.com/68Yy80c.png)  
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/1149ba85c97f46f7a20fe41387090b1d)](https://app.codacy.com/gh/Exponefrv1/univk_audio/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![PyPI version](https://badge.fury.io/py/univk-audio.svg)](https://badge.fury.io/py/univk-audio)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Exponefrv1/univk_audio/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/Exponefrv1/univk_audio/?branch=main)
+[![Build Status](https://scrutinizer-ci.com/g/Exponefrv1/univk_audio/badges/build.png?b=main)](https://scrutinizer-ci.com/g/Exponefrv1/univk_audio/build-status/main)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/Exponefrv1/univk_audio/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/1149ba85c97f46f7a20fe41387090b1d)](https://app.codacy.com/gh/Exponefrv1/univk_audio/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 # Search and download songs from VK easily with univk_audio
 An easy-to-use library that allows you to search and download audio from VK, bypassing the restriction on obtaining a token to use the VK audio API.
 
