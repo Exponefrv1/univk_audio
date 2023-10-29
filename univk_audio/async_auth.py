@@ -92,9 +92,13 @@ class AsyncVKAuth:
             async with self._session.get(
                 self._req_data.links[0],
                 headers=self._req_data.main_headers
-            ):
+            ) as oauth_response:
                 cookies = self._session.cookie_jar.filter_cookies("http://oauth.vk.com/")
                 cookies = "; ".join([str(x)+"="+str(y) for x, y in cookies.items()])
+                redirect_url = str(oauth_response.url)
+                auth_hash = redirect_url.split("=")[8].replace("&scope", "")
+                self._req_data.vkid_auth_link = redirect_url
+                self._req_data.oauth_code_data.update({"hash": auth_hash})
                 self._req_data.main_headers.update({"Cookie": cookies})
         except Exception as err:
             raise OAuthRequestError("Failed to send/process 'OAuth' request") from err
@@ -103,7 +107,7 @@ class AsyncVKAuth:
     async def __send_vk_id_auth_request(self) -> None:
         try:
             async with self._session.get(
-                self._req_data.links[1],
+                self._req_data.vkid_auth_link,
                 headers=self._req_data.main_headers
             ) as vk_id_request:
                 if vk_id_request.status == 200:
@@ -144,7 +148,7 @@ class AsyncVKAuth:
 
     async def __solve_captcha_request(self) -> Dict[str, str]:
         async with self._session.post(
-            self._req_data.links[2],
+            self._req_data.links[1],
             headers=self._req_data.main_headers,
             data=self._req_data.connect_auth_data
         ) as connect_auth_request:
@@ -153,7 +157,7 @@ class AsyncVKAuth:
 
     async def __solve_captcha(self, access_token_data) -> Dict[str, str]:
         while access_token_data.get("type") == "captcha":
-            print("Please solve the captcha:\n", access_token_data.get("captcha_img"))
+            print("Please, solve the captcha:\n", access_token_data.get("captcha_img"))
             answer = str(input("Solving: "))
             self._req_data.connect_auth_data.update({
                 "captcha_key": answer,
@@ -186,7 +190,7 @@ class AsyncVKAuth:
     async def __send_connect_auth_request(self) -> None:
         try:
             async with self._session.post(
-                self._req_data.links[2],
+                self._req_data.links[1],
                 headers=self._req_data.main_headers,
                 data=self._req_data.connect_auth_data
             ) as connect_auth_request:
@@ -206,7 +210,7 @@ class AsyncVKAuth:
     async def __send_oauth_code_request(self) -> None:
         try:
             async with self._session.post(
-                self._req_data.links[3],
+                self._req_data.links[2],
                 headers=self._req_data.main_headers,
                 data=self._req_data.oauth_code_data
             ) as oauth_code_request:
@@ -219,7 +223,7 @@ class AsyncVKAuth:
     async def __send_get_cookies_request(self) -> str:
         try:
             async with self._session.get(
-                self._req_data.links[4],
+                self._req_data.links[3],
                 params={"code": self._req_data.code}
             ):
                 cookies = self._session.cookie_jar.filter_cookies("http://luxvk.com/")

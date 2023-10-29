@@ -41,16 +41,13 @@ class VKAuthData:
             " (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
 
         self.links: Tuple[str, ...] = (
-                "http://oauth.vk.com/authorize?client_id=6102407" \
+                "https://oauth.vk.com/authorize?client_id=6102407" \
                 "&redirect_uri=http://luxvk.com&response_type=code",
-                "https://id.vk.com/auth?app_id=6102407&state=" \
-                "&response_type=code&redirect_uri=http%3A%2F%2Fluxvk.com" \
-                "&redirect_uri_hash=194719be504392f684&code_challenge=" \
-                "&code_challenge_method=&return_auth_hash=9283343fd862473e7e&scope=0&force_hash=",
                 "https://login.vk.com/?act=connect_authorize",
                 "https://api.vk.com/method/auth.getOauthCode?v=5.207&client_id=6102407",
                 "http://luxvk.com/"
             )
+        self.vkid_auth_link: Optional[str] = None
         self.auth_part_pattern: str = r'"auth":\s*{\s*"(?:\w+|_\w+)"\s*:\s*"(.*?)",\s*' \
         r'"(?:\w+|_\w+)"\s*:\s*"(.*?)",\s*"(?:\w+|_\w+)"\s*:\s*([0-9]+),\s*"(?:\w+|_\w+)"' \
         r'\s*:\s*([0-9]+),\s*"(?:\w+|_\w+)"\s*:\s*([0-9]+)\s*}'
@@ -69,6 +66,5 @@ class VKAuthData:
         self.oauth_code_data: Dict[str, str] = {
             "redirect_uri": "http://luxvk.com",
             "app_id": "6102407",
-            "hash": "9283343fd862473e7e",
         }
         self.code: Optional[str] = None
