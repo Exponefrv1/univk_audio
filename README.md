@@ -1,3 +1,5 @@
+# ⚠️ Repository closed. Do not use it in your projects.
+
 ![Logo](https://i.imgur.com/68Yy80c.png)  
 [![PyPI version](https://badge.fury.io/py/univk-audio.svg)](https://badge.fury.io/py/univk-audio)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Exponefrv1/univk_audio/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/Exponefrv1/univk_audio/?branch=main)
