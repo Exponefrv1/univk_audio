@@ -1,4 +1,4 @@
-# ⚠️ Repository closed. Do not use it in your projects.
+# ⚠️ The library doesn't work and deprecated. Do not use it in your projects.
 
 ![Logo](https://i.imgur.com/68Yy80c.png)  
 [![PyPI version](https://badge.fury.io/py/univk-audio.svg)](https://badge.fury.io/py/univk-audio)
