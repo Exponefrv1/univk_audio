@@ -64,7 +64,6 @@ class AsyncVKAuth:
     """
 
     __slots__ = (
-        "_captcha_solver",
         "_req_data",
         "_session"
     )
